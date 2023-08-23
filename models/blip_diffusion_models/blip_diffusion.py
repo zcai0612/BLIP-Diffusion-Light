@@ -884,7 +884,7 @@ class BlipDiffusion(BaseModel):
         def compute_ctx_embeddings(input_image, text_input):
             # blip_embeddings = self.blip(image=input_image, text=text_input)
             blip_embeddings = self.blip.extract_features(
-                {"image": input_image, "text_input": text_input}, mode="multimodal"
+                {"image": input_image, "text_input": text_input}, mode="multimodal", dtype=self.dtype
             ).multimodal_embeds
             ctx_embeddings = self.proj_layer(blip_embeddings)
 

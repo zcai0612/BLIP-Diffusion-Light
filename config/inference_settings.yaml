@@ -5,20 +5,24 @@ model:
   pretrained_path: "D:/my_files/projects/2D_Generation/my_blip_diffusion/weights/blip-diffusion"
 
   controlnet_path: "D:/apps/tools/programming/.cache/huggingface/controlnet/sd-controlnet-openpose"
+  controlnet_path: ''
 
-  mixed_precision: True
+  # mixed_precision: True
+  mixed_precision: False
 
 run:
-  cond_subject: 'man'
-  tgt_subject: 'man'
-  txt_prompt: "wearing Superman's suit."
+  cond_subject: 'dog'
+  tgt_subject: 'dog'
+  txt_prompt: "in batman suit"
 
-  cond_image_path: "images/subjects/man/man1.jpg"
+  cond_image_path: "images/subjects/dog/dog.png"
   # for controlnet
-  cldm_cond_image_path: "images/controls/pose1.jpeg"
+  # cldm_cond_image_path: "images/controls/pose1.jpeg"
+  cldm_cond_image_path: ""
 
-  num_output: 1
-  iter_seed: 8888
+
+  num_output: 3
+  iter_seed: 88888
   guidance_scale: 7.5
   num_inference_steps: 50
   negative_prompt: "over-exposure, under-exposure, saturated, duplicate, out of frame, lowres, cropped, worst quality, low quality, jpeg artifacts, morbid, mutilated, out of frame, ugly, bad anatomy, bad proportions, deformed, blurry, duplicate"

@@ -459,7 +459,7 @@ class Blip2Qformer(Blip2Base):
             # return multimodel query features
             with self.maybe_autocast():
                 image_embeds_frozen = self.ln_vision(self.visual_encoder(image))
-            # image_embeds_frozen = image_embeds_frozen.float() # TODO
+            image_embeds_frozen = image_embeds_frozen.float() # TODO
             image_atts = torch.ones(
                 image_embeds_frozen.size()[:-1], dtype=torch.long
             ).to(self.device)

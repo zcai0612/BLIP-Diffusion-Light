@@ -6,7 +6,7 @@ from models.blip_diffusion_models.blip_diffusion import BlipDiffusion
 from common.utils import load_cfg
 
 
-cfg = load_cfg('inference_settings.yaml')
+cfg = load_cfg('./config/inference_settings.yaml')
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
@@ -36,7 +36,10 @@ text_prompt = [txt_preprocess(txt_prompt)]
 
 cond_image = Image.open(cfg['run']['cond_image_path']).convert("RGB")
 
-cldm_cond_image = Image.open(cfg['run']['cldm_cond_image_path']).convert("RGB")
+if cfg['run']['cldm_cond_image_path']:
+    cldm_cond_image = Image.open(cfg['run']['cldm_cond_image_path']).convert("RGB")
+else:
+    cldm_cond_image = None
 
 cond_images = vis_preprocess(cond_image).unsqueeze(0).cuda().to(weight_dtype)
 

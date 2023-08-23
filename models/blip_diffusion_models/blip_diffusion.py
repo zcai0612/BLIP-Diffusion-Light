@@ -137,7 +137,7 @@ class BlipDiffusion(BaseModel):
         if pretrained_weights_dir is not None:
             self.load_from_pretrained(pretrained_weights_dir)
             
-        if controlnet_pretrained_model_name_or_path is not None:
+        if controlnet_pretrained_model_name_or_path:
             self.controlnet = ControlNetModel.from_pretrained(
                 controlnet_pretrained_model_name_or_path
             )
